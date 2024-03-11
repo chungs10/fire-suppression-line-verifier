@@ -1,0 +1,137 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.black-bar {
+    background-color: black;
+    color: white;
+    padding: 0; 
+    margin: 0; 
+    width: 100%;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.logo {
+    height: 30px; 
+    width: 30px;
+    margin-right: 10px; 
+    margin-left: 20px; 
+}
+.title {
+    font-size: 24px; 
+}
+.airplane-choice {
+    padding: 10px 20px; 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    text-align:center;
+    font-size:large;
+}
+
+.checklist {
+    border-collapse: collapse;
+    width: 60%;
+    margin-top:100px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.checklist th, .checklist td {
+    border: 1px solid black;
+    padding: 16px; 
+    text-align: left;
+    font-size: 18px; 
+    height: 30px; 
+    width: 150px; 
+}
+.checklist th {
+    background-color: #f2f2f2;
+}
+.checklist td a {
+    text-decoration: none; 
+    color: inherit; 
+    transition: color 0.3s ease;
+}
+
+.checklist td a:hover {
+    color: blue; 
+}
+.box-container {
+    margin-top:3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.box-container-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .box-capture, .box-result {
+      width: 420px;
+      height: 300px;
+      border: 1px solid black;
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .box-capture img {
+    max-width: 100%; 
+    max-height: 100%; 
+    display: block; 
+    margin: auto; 
+  }
+  
+
+    .box-container-item button {
+        width: 80%; 
+        height: 45px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 30px;
+        display: inline-block;
+        text-align:center;
+        background-color: #007bff; 
+        color: white;
+        text-decoration: none;
+        line-height: 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+        font-size: 30px;
+    }
+
+    .back-button {
+        position: fixed;
+        bottom: 0;
+        width: 30%; 
+        height: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        display: inline-block;
+        text-align:center;
+        background-color: #007bff; 
+        color: white;
+        text-decoration: none;
+        line-height: 30px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+        font-size: 30px;
+    }
