@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fire Surpression</title>
-    <link rel="stylesheet" href="../CSS/styles.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <div class="black-bar">
-        <img src="../Images/logo.png" alt="Logo" class="logo">
-        <span class="title">United</span>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Capture</title>
+<style>
+  .video-container
+  {
+    width: 420px;
+      height: 300px;
+      border: 3px solid black;
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+</style>
+<link rel="stylesheet" href="../CSS/styles.css">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div class="black-bar">
+    <img src="../Images/logo.png" alt="Logo" class="logo">
+    <span class="title">United</span>
+</div>
+<div class="box-container">
+  <div class="box-container-item">
+    <div class="box-capture" id="video-container">
+      <video id="video" playsinline autoplay></video>
     </div>
-    <div class="box-container">
-      <div class="box-container-item">
-        <div class="box-capture">
-            <!-- Content for the first box -->
-        </div>
-        <button id="capture">Capture Image</button>
-      </div>
-      <div class="box-container-item">
-        <div class="box-result">
-            <!-- Content for the second box -->
-        </div>
-        <button id="analyze">Analyze</button>
-      </div>
+    <button id="capture">Capture Image</button>
+  </div>
+  <div class="box-container-item">
+    <div class="box-result" id="result-container">
+      <img id="captured-image" src="#" alt="Captured Image">
     </div>
+    <button id="analyze">Analyze</button>
+  </div>
+</div>
 
-    <a href="image_capture.html" class="back-button">Back</a>
+<a href="image_capture.html" class="back-button">Back</a>
 
-	<script src="../JS/upload.js"></script>
-  </body>
+<!-- <script src="../JS/upload.js"></script> -->
+<script src="../JS/camera.js"></script>
+</body>
 </html>

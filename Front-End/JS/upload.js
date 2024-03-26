@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       reader.readAsDataURL(file);
     };
   }
-  
+    
   function analyzeImage() {
     var box1 = document.querySelector('.box-capture');
     var image = box1.querySelector('img');

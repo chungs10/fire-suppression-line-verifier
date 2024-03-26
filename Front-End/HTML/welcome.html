@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Background with Button</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  #video-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+  }
+  button {
+    margin-top:350px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .image-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .image-container img {
+    width: 600px; /* Adjust image size as needed */
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+<div id="video-background">
+  <video autoplay loop muted>
+    <source src="../Video/United Rhapsody in Blue.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<div class="image-container">
+    <img src="../Images/united-airlines.png" alt="Image">
+  </div>
+<div class="content">
+    <a href="image_capture.html"><button>Start</button></a>
+  </div>
+</body>
+</html>
