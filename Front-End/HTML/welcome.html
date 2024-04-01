@@ -1,76 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Background with Button</title>
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-  #video-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-  }
-  .content {
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+     .foreground-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 25%;
+    left: 25%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 1;
-  }
-  button {
-    margin-top:350px;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: black;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .image-container {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-  .image-container img {
-    width: 600px; /* Adjust image size as needed */
-    height: 200px;
-    display: block;
-    margin: 0 auto;
-  }
-</style>
-</head>
-<body>
-<div id="video-background">
-  <video autoplay loop muted>
-    <source src="../Video/United Rhapsody in Blue.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-<div class="image-container">
-    <img src="../Images/united-airlines.png" alt="Image">
-  </div>
-<div class="content">
-    <a href="image_capture.html"><button>Start</button></a>
-  </div>
-</body>
+    width: 50%; /* Adjust width as needed */
+    height: 50%; /* Adjust height as needed */
+    background-image: url('../Images/removed back ground.png'); /* Set the path to your foreground image */
+    background-size: cover; /* Adjust background size as needed */
+    background-repeat: no-repeat;
+    z-index: 1; /* Ensure the foreground image appears above the black bar */
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -30px; 
+}
+.top-words {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust spacing between top words and bottom word */
+  color:white;
+  font-size:5em;
+}
+
+.top-words span {
+  display: block;
+  
+}
+
+.bottom-word {
+  text-align: center;
+  font-size:2em;
+}
+.start-btn {
+  background-color: #007bff; /* Button background color */
+  display: inline-block;
+  color: #fff; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-decoration: none; /* Remove default underline */
+  cursor: pointer;
+  position: absolute;
+  top: 20px; /* Adjust the distance from the top */
+  left: 50%; /* Center horizontally */
+  top:80%;
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 1; /* Ensure the button appears above other content */
+}
+
+
+.get-started-btn:hover {
+    background-color: #0056b3; /* Change color on hover */
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="black-bar">
+      <img src="../Images/icon.png" alt="Another Image" class="right-image">
+      <div class = "circle"></div>
+        <span class="title">United</span>
+    </div>
+    
+    <div class="foreground-image"></div>
+    <div class="container">
+      <div class="top-words">
+        <span>Aircraft Loading</span>
+        <span>Application</span>
+      </div>
+      <div class="bottom-word">
+        <span>Good Leads the Way</span>
+      </div>
+    </div>
+    <!-- <button class="airplane-choice">Select Airplane</button> -->
+    <a href="select.html" class="start-btn">Get Started <span>&rarr;</span></a>
+
+    
+
+  </body>
 </html>
