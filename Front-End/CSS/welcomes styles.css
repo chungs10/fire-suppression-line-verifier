@@ -9,6 +9,7 @@
     background-size: cover; /* Adjust background size as needed */
     background-repeat: no-repeat;
     z-index: 1; /* Ensure the foreground image appears above the black bar */
+    /* <a href="select.html" class="start-btn">Get Started <span>&rarr;</span></a> */
 }
 .video-background {
             position: fixed;
