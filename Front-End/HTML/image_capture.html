@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+        .submit-verification-btn{
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top:32%;
+            margin-left:43%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="black-bar">
+        <img src="../Images/icon.png" alt="Another Image" class="right-image">
+        <div class = "circle"></div>
+          <span class="title">United</span>
+      </div>
+    
+
+    <table class="checklist">
+        <tr>
+            <th>Luggage Check List</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td style = "background-color:#051464; color:white;"><a href="weight.html">Weight Distribution</a></td>
+            <td style = "background-color:#551E5F; color:white;">Not Ready</td>
+        </tr>
+        <tr>
+            <td style = "background-color:#FF4B4B; color:white;"><a href="fire.html">Fire Suppression Line</a></td>
+            <td style = "background-color:#7D283C; color:white;">Not Ready</td>
+        </tr>
+        <tr>
+            <td style = "background-color:#696E28; color:white;"><a href="strap.html">Luggage Lockdown</a></td>
+            <td style = "background-color:#2D4637; color:white;">Not Ready</td>
+        </tr>
+    </table>
+    <button class="submit-verification-btn" onclick="submitVerification()">Submit Verification</button>
+
+<script>
+    function submitVerification() {
+        // Redirect to another page for verification submission
+        window.location.href = "end.html";
+    }
+</script>
+
+
+	<!-- <script src="index.js"></script> -->
+  </body>
+</html>

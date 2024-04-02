@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weight</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+      .get-started-btn {
+        background-color: #007bff; /* Button background color */
+        color: #fff; /* Button text color */
+        border: none;
+        text-decoration: none; 
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 25px 50px;
+        cursor: pointer;
+        position: absolute;
+        right: -10%; /* Center horizontally */
+        top:90%;
+        transform: translateX(-50%); /* Center horizontally */
+        z-index: 1; /* Ensure the button appears above other content */
+      }
+      .get-started-btn:hover {
+          background-color: #0056b3; /* Change color on hover */
+      }
+      #captured-image {
+        display: none; /* Initially hide the captured image */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="black-bar">
+      <img src="../Images/icon.png" alt="Another Image" class="right-image">
+      <div class = "circle"></div>
+        <span class="title">United</span>
+    </div>
+    
+    
+    <div class="box-container">
+      <div class="box-container-item">
+        <div class="box-capture">
+            <video id="video" playsinline autoplay></video>
+            <img id="captured-image" alt="Captured Image">
+        </div>
+        <div class = "two-button">
+        <button id="capture" class="two-button">Capture</button>
+        <button id="upload" class="two-button">Upload</button>
+      </div>
+      </div>
+      
+      <div class="box-container-item">
+        <div class="box-result">
+            <!-- Content for the second box -->
+        </div>
+        <button id="analyze">Analyze</button>
+      </div>
+    </div>
+    <a href="image_capture.html" class="get-started-btn">Continue <span>&rarr;</span></a>
+    <a href="fire.html" class="back-button"><span>&larr;</span> Back</a>
+
+	<script src="../JS/upload.js"></script>
+  <script src="../JS/camera.js"></script>
+  </body>
+</html>

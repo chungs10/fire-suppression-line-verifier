@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+     .foreground-image {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust width as needed */
+    height: 80%; /* Adjust height as needed */
+    background-image: url('../Images/removed back ground.png'); /* Set the path to your foreground image */
+    background-size: cover; /* Adjust background size as needed */
+    background-repeat: no-repeat;
+    z-index: 1; /* Ensure the foreground image appears above the black bar */
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -30px; 
+}
+.top-words {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust spacing between top words and bottom word */
+  color:white;
+  font-size:5em;
+}
+
+.top-words span {
+  display: block;
+  
+}
+
+.bottom-word {
+  text-align: center;
+  font-size:2em;
+}
+
+/* Dropdown menu styles */
+/* Dropdown menu styles */
+/* Dropdown menu styles */
+    .dropdown-menu {
+        display: block; /* Display the dropdown menu */
+        position: absolute;
+        top: 30%; /* Adjust distance from the button */
+        left: 70%; /* Center horizontally */
+        transform: translateX(-50%);
+        background-color: black;
+        color: white; /*3Text color */
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 5; /* Ensure the menu appears above other content */
+        width: 200px; /* Adjust the width of the dropdown menu */
+        
+    }
+
+    .dropdown-menu select {
+        width: 100%; /* Make the select element fill the entire width of the dropdown menu */
+        padding: 10px; /* Add padding to the select element */
+        font-size: inherit; /* Inherit font size */
+    }
+
+    .dropdown-menu label {
+        display: block; /* Make the label a block element */
+        margin-bottom: 5px; /* Add some spacing below the label */
+        color: white; /* Label text color */
+    }
+    .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+    </style>
+  </head>
+  <body>
+    <div class="black-bar">
+      <img src="../Images/icon.png" alt="Another Image" class="right-image">
+      <div class = "circle"></div>
+        <span class="title">United</span>
+    </div>
+    
+    <div class="foreground-image"></div>
+    <!-- Dropdown menu -->
+    <div class="dropdown-menu" id="dropdownMenu">
+        <label for="dog-names" class="sr-only">Select an Airplane:</label> 
+        <select name="dog-names" id="dog-names"> 
+            <option value="" disabled selected>Select an Airplane</option>
+            <option value="Boeing 777">Boeing 777</option> 
+            <option value="Boeing 787">Boeing 787</option> 
+            <option value="Boeing 737">Boeing 737</option> 
+            <option value="Boeing 757">Boeing 757</option> 
+            <option value="Airbus">Airbus</option> 
+        </select>
+    </div>
+   
+    <!-- <button class="airplane-choice">Select Airplane</button> -->
+    <a href="weight.html" class="get-started-btn">Continue <span>&rarr;</span></a>
+
+    
+
+  </body>
+</html>
