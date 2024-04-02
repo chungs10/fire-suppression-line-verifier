@@ -28,6 +28,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: 30px 30px; /* Set the size of the logo image */
     background-position: 20px center; /* Adjust the position of the logo image */
+    z-index:1;
 }
 .foreground-image {
     position: absolute;
