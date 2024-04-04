@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weight</title>
     <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/home.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <style>
       .get-started-btn {
@@ -29,14 +30,31 @@
       #captured-image {
         display: none; /* Initially hide the captured image */
       }
+      .logo{
+  float: left; /* Float the logo to the right */
+    margin-right: 20px; /* Add margin to the right to create space */
+    position: relative; /* Set position to relative */
+    top: -10px; /* Move the logo 20px up */
+}
     </style>
   </head>
   <body>
-    <div class="black-bar">
-      <img src="../Images/icon.png" alt="Another Image" class="right-image">
-      <div class = "circle"></div>
-        <span class="title">United</span>
-    </div>
+    
+    <div class="main">
+      <div class="logo">
+        <a href="home.html"> 
+              <img src="../Images/united_1.jpg">
+          </a>
+      </div>
+
+      <ul>
+          <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+          <li><a href="#">About</a></li>
+          <div class = "circle"></div>
+          <img src="../Images/icon.png" alt="Another Image" class="right-image">
+      </ul>
+  </div>
+    
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar">
         <div class="progress-slot progress-filled">Select</div>
