@@ -2,7 +2,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    background-image: url('../Images/new_1.jpg');
+    background-image: url('../Images/background\ 1.jpeg');
     background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -11,6 +11,34 @@ body, html {
   height: 100vh;
   overflow: hidden;
 }
+.progress-container {
+    width: 90%;
+    background-color: #f3f3f3;
+    padding: 5px;
+    margin-top:70px;
+    margin-left: 70px;
+    
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-slot {
+    flex-grow: 1;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-filled {
+    background-color: #4caf50;
+    color: white;
+}
+
 
 
 .black-bar {
