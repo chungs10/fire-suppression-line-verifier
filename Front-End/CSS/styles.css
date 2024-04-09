@@ -231,15 +231,15 @@ body, html {
 }
     #capture {
         margin-left:4em; /* Add right margin to create spacing */
-        margin-top:10%;
+        margin-top:30px;
       }
       
     #upload {
         margin-left: -2em; /* Add left margin to create spacing */
-        margin-top:10%;
+        margin-top:30px;
     }
     #analyze{
-        margin-right:-50%;
+        margin-right:50px;
     }
 
     .back-button{
