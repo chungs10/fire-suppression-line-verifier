@@ -80,6 +80,7 @@ body, html {
 
 .right-image {
     position: fixed;
+    margin-top:-12px;
     top: 40px; /* Adjust the top position */
     right: 70px; /* Adjust the right position */
     width: 30px; /* Set the width */
