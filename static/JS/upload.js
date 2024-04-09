@@ -118,6 +118,6 @@ function displayImage(filePath) {
   var img = new Image();
   img.src = filePath;
   img.style.width = "300px";
-  img.style.height = "300px";
+  //img.style.height = "300px";
   imageContainer.appendChild(img);
 }

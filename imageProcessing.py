@@ -43,7 +43,7 @@ def process_and_save_image(image_path, state):
         # Write "Pass" on the image in green
         text_color = (0, 255, 0)  # Green color
         font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 10
+        font_scale = 5
         thickness = 20
         text = "Pass"
         text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
