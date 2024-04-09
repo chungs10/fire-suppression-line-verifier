@@ -1,35 +1,4 @@
 
-  @media screen and (max-width: 844px) and (max-height: 390px) {
-    body, html {
-        /* Your styles for body and html */
-        overflow: auto; /* Enable scrolling */
-      }
-    
-      /* Add specific styles for elements to fit within the smaller viewport */
-      .progress-container,
-      .black-bar,
-      .foreground-image,
-      .circle,
-      .airplane-choice,
-      .checklist,
-      .box-container,
-      .box-container-item,
-      .box-capture,
-      .box-result,
-      .box-capture img,
-      .box-capture video,
-      .box-container-item button,
-      .two-button,
-      #capture,
-      #upload,
-      .back-button,
-      .get-started-btn,
-      .video-container {
-        /* Your styles for these elements */
-        /* Adjust sizes, margins, paddings, etc., to fit within the smaller viewport */
-      }
-    
-  }
 
 body, html {
     margin: 0;
@@ -44,7 +13,7 @@ body, html {
   overflow: hidden;
 }
 .progress-container {
-    width: 90%;
+    width: 70em;
     background-color: #f3f3f3;
     padding: 5px;
     margin-top:70px;
@@ -110,14 +79,11 @@ body, html {
 }
 
 .right-image {
-    position: absolute;
-    top: 7%; /* Center vertically */
-    transform: translateY(-50%); /* Center vertically */
-    right: 21px; /* Adjust horizontally */
+    position: fixed;
+    top: 40px; /* Adjust the top position */
+    right: 70px; /* Adjust the right position */
     width: 30px; /* Set the width */
     height: 30px; /* Set the height */
-    top: 40px;
-    right:70px;
     z-index: 2;
 }
 
@@ -336,7 +302,7 @@ body, html {
     }
 
     .dropdown-menu select {
-        width: 100%; /* Make the select element fill the entire width of the dropdown menu */
+        width: 200px; /* Make the select element fill the entire width of the dropdown menu */
         padding: 10px; /* Add padding to the select element */
         font-size: inherit; /* Inherit font size */
     }
