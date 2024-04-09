@@ -13,3 +13,10 @@ The United Airlines ramp employees do not have a standardized checklist for ensu
 - Elevating employee and customer experience through efficient loading
 processes.
 - Utilizing technology for improved safety and compliance.
+
+# Python pip installs
+- pip install opencv-python numpy keras tensorflow pyqt5 Pillow
+
+# How to run:
+- From the main United folder, run `python router.py`
+- Once the initial processes are complete, navigate to 127.0.0.1:5000 in a browser

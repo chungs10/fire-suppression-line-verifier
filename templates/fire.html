@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weight</title>
+    <link rel="stylesheet" href="./static/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="./static/CSS/styles.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+      .get-started-btn {
+        background-color: #007bff; /* Button background color */
+        color: #fff; /* Button text color */
+        border: none;
+        text-decoration: none; 
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 25px 50px;
+        cursor: pointer;
+        position: absolute;
+        right: -10%; /* Center horizontally */
+        top:90%;
+        transform: translateX(-50%); /* Center horizontally */
+        z-index: 1; /* Ensure the button appears above other content */
+      }
+      .get-started-btn:hover {
+          background-color: #0056b3; /* Change color on hover */
+      }
+      #captured-image {
+        display: none; /* Initially hide the captured image */
+      }
+      .logo{
+  float: left; /* Float the logo to the right */
+    margin-right: 20px; /* Add margin to the right to create space */
+    position: relative; /* Set position to relative */
+    top: -10px; /* Move the logo 20px up */
+}
+    </style>
+  </head>
+  <body>
+    
+    <div class="main">
+      <div class="logo">
+        <a href="{{ url_for('home') }}"> 
+              <img src="./static/Images/united_1.jpg">
+          </a>
+      </div>
+
+      <ul>
+          <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+          <li><a href="#">About</a></li>
+          <div class = "circle"></div>
+          <img src="./static/Images/icon.png" alt="Another Image" class="right-image">
+      </ul>
+  </div>
+    
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress-slot progress-filled">Select</div>
+          <div class="progress-slot progress-filled">Weight</div>
+          <div class="progress-slot progress-filled">Fire</div>
+          <div class="progress-slot" id="progress-slot-4">Strap</div>
+          <div class="progress-slot" id="progress-slot-5">Submit</div>
+      </div>
+  </div>
+  
+    
+    
+    <div class="box-container">
+      <div class="box-container-item">
+        <div class="box-capture">
+            <video id="video" playsinline autoplay></video>
+            <img id="captured-image" alt="Captured Image">
+        </div>
+        <div class = "two-button">
+        <button id="capture" class="two-button">Capture</button>
+        <button id="upload" class="two-button">Upload</button>
+      </div>
+      </div>
+      
+      <div class="box-container-item">
+        <div class="box-result">
+            <!-- Content for the second box -->
+        </div>
+        <button id="analyze">Analyze</button>
+      </div>
+    </div>
+    <a href="{{ url_for('strap') }}" class="get-started-btn">Continue <span>&rarr;</span></a>
+    <a href="{{ url_for('weight') }}" class="back-button"><span>&larr;</span> Back</a>
+
+	<script src="./static/JS/upload.js"></script>
+  <script src="./static/JS/camera.js"></script>
+  </body>
+</html>
