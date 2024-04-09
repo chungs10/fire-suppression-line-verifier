@@ -50,6 +50,8 @@
       <ul>
           <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
           <li><a href="#">About</a></li>
+          <button id="captureImage">Capture Image</button>
+          <button id="liveAnalysis">Live Analysis</button>
           <div class = "circle"></div>
           <img src="./static/Images/icon.png" alt="Another Image" class="right-image">
       </ul>
@@ -65,8 +67,6 @@
       </div>
   </div>
   
-    
-    
     <div class="box-container">
       <div class="box-container-item">
         <div class="box-capture">
@@ -84,6 +84,7 @@
             <!-- Content for the second box -->
         </div>
         <button id="analyze">Analyze</button>
+
       </div>
     </div>
     <a href="{{ url_for('strap') }}" class="get-started-btn">Continue <span>&rarr;</span></a>
