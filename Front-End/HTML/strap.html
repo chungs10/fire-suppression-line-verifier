@@ -64,11 +64,21 @@
         <div class="box-result">
             <!-- Content for the second box -->
         </div>
-        <button id="analyze">Analyze</button>
+        <button id="analyze"onclick="confirmStrapAction()" >Analyze</button>
       </div>
     </div>
     <a href="image_capture.html" class="get-started-btn">Continue <span>&rarr;</span></a>
     <a href="fire.html" class="back-button"><span>&larr;</span> Back</a>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+            // Reset confirmation status for strap action to "unconfirmed"
+            localStorage.setItem('strapConfirmation', 'unconfirmed');
+        });
+      function confirmStrapAction() {
+          // Set confirmation flag for strap action in localStorage
+          localStorage.setItem('strapConfirmation', 'confirmed');
+      }
+  </script>
 
 	<script src="../JS/upload.js"></script>
   <script src="../JS/camera.js"></script>

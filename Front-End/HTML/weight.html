@@ -59,9 +59,19 @@
         <div class="box-result">
             <!-- Content for the second box -->
         </div>
-        <button id="analyze">Analyze</button>
+        <button id="analyze" onclick="confirmWeightAction()">Analyze</button>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+            // Reset confirmation status for weight action to "unconfirmed"
+            localStorage.setItem('weightConfirmation', 'unconfirmed');
+        });
+      function confirmWeightAction() {
+          // Set confirmation flag for weight action in localStorage
+          localStorage.setItem('weightConfirmation', 'confirmed');
+      }
+  </script>
     <a href="fire.html" class="get-started-btn">Continue <span>&rarr;</span></a>
     <a href="select.html" class="back-button"><span>&larr;</span> Back</a>
 

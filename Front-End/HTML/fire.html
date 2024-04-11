@@ -66,11 +66,21 @@
         <div class="box-result">
             <!-- Content for the second box -->
         </div>
-        <button id="analyze">Analyze</button>
+        <button id="analyze" onclick="confirmFireAction()">Analyze</button>
       </div>
     </div>
     <a href="strap.html" class="get-started-btn">Continue <span>&rarr;</span></a>
     <a href="weight.html" class="back-button"><span>&larr;</span> Back</a>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+            // Reset confirmation status for fire action to "unconfirmed"
+            localStorage.setItem('fireConfirmation', 'unconfirmed');
+        });
+      function confirmFireAction() {
+          // Set confirmation flag for fire action in localStorage
+          localStorage.setItem('fireConfirmation', 'confirmed');
+      }
+  </script>
 
 	<script src="../JS/upload.js"></script>
   <script src="../JS/camera.js"></script>

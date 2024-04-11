@@ -14,8 +14,8 @@ body, html {
 }
 .progress-container {
     width: 70em;
-    background-color: #f3f3f3;
-    padding: 5px;
+    background-color: white;
+    padding: 3px;
     margin-top:70px;
     margin-left: 70px;
     
@@ -29,15 +29,15 @@ body, html {
 .progress-slot {
     flex-grow: 1;
     height: 30px;
-    border: 1px solid #ddd;
+    border: 0.8px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .progress-filled {
-    background-color: #4caf50;
-    color: white;
+    background-color: #1fd655;
+    color: black;
 }
 
 
@@ -119,10 +119,18 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.checklist th, .checklist td {
+.checklist th {
     border: 1px solid black;
     padding: 16px; 
-    text-align: left;
+    text-align: center;
+    font-size: 18px; 
+    height: 30px; 
+    width: 150px; 
+}
+.checklist td {
+    border: 1px solid black;
+    padding: 16px; 
+    text-align: center;
     font-size: 18px; 
     height: 30px; 
     width: 150px; 
