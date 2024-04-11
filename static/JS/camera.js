@@ -3,6 +3,7 @@ video.controls = false;
 const captureButton = document.getElementById('capture');
 const capturedImage = document.getElementById('captured-image');
 const resultContainer = document.getElementById('result-container');
+var cameraActive = false;
 
 async function toggleCamera() {
     if (!cameraActive) {

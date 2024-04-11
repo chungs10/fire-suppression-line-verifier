@@ -15,7 +15,7 @@ processes.
 - Utilizing technology for improved safety and compliance.
 
 # Python pip installs
-- pip install opencv-python numpy keras tensorflow pyqt5 Pillow
+- pip install opencv-python numpy keras tensorflow pyqt5 Pillow flask
 
 # How to run:
 - From the main United folder, run `python router.py`
