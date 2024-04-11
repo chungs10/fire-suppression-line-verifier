@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weight</title>
-    <link rel="stylesheet" href="./static/CSS/styles.css">
-    <link rel="stylesheet" type="text/css" href="./static/CSS/styles.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./static/CSS/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./static/CSS/styles.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <style>
       #captured-image {
         display: none; /* Initially hide the captured image */
       }
-      .logo{
-  float: left; /* Float the logo to the right */
-    margin-right: 20px; /* Add margin to the right to create space */
-    position: relative; /* Set position to relative */
-    top: -10px; /* Move the logo 20px up */
-}
+      .logo {
+        float: left; /* Float the logo to the right */
+        margin-right: 20px; /* Add margin to the right to create space */
+        position: relative; /* Set position to relative */
+        top: -10px; /* Move the logo 20px up */
+      }
     </style>
   </head>
   <body>
-    
     <div class="main">
       <div class="logo">
-        <a href="{{ url_for('home') }}"> 
-              <img src="./static/Images/united_1.jpg">
-          </a>
+        <a href="{{ url_for('home') }}"><img src="./static/Images/united_1.jpg" /></a>
       </div>
 
       <ul>
-          <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
-          <li><a href="#">About</a></li>
-          <div class = "circle"></div>
-          <img src="./static/Images/icon.png" alt="Another Image" class="right-image">
+        <li class="active">
+          <a href="#"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <div class="circle"></div>
+        <img src="./static/Images/icon.png" alt="Another Image" class="right-image" />
       </ul>
-  </div>
+    </div>
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar">
         <div class="progress-slot progress-filled">Select</div>
-          <div class="progress-slot progress-filled">Weight</div>
-          <div class="progress-slot progress-filled">Fire</div>
-          <div class="progress-slot progress-filled">Strap</div>
-          <div class="progress-slot" id="progress-slot-5">Submit</div>
+        <div class="progress-slot progress-filled">Weight</div>
+        <div class="progress-slot progress-filled">Fire</div>
+        <div class="progress-slot progress-filled">Strap</div>
+        <div class="progress-slot" id="progress-slot-5">Submit</div>
       </div>
-  </div>
-  
-    
-    
+    </div>
+
     <div class="box-container">
+      <div class="box-live-buttons">
+        <button id="captureImage">Capture Template</button>
+        <button id="liveAnalysis">Live Analysis</button>
+      </div>
       <div class="box-container-item">
         <div class="box-capture">
-            <video id="video" playsinline autoplay></video>
-            <img id="captured-image" alt="Captured Image">
+          <video id="video" playsinline autoplay></video>
+          <img id="captured-image" alt="Captured Image" />
         </div>
-        <div class = "two-button">
-        <button id="capture" class="two-button">Capture</button>
-        <button id="upload" class="two-button">Upload</button>
+        <div class="two-button">
+          <button id="capture" class="two-button">Capture</button>
+          <button id="upload" class="two-button">Upload</button>
+        </div>
       </div>
-      </div>
-      
+
       <div class="box-container-item">
         <div class="box-result">
-            <!-- Content for the second box -->
+          <!-- Content for the second box -->
         </div>
         <button id="analyze">Analyze</button>
       </div>
@@ -70,7 +73,7 @@
     <a href="{{ url_for('capture') }}" class="get-started-btn">Continue <span>&rarr;</span></a>
     <a href="{{ url_for('fire') }}" class="back-button"><span>&larr;</span> Back</a>
 
-	<script src="./static/JS/upload.js"></script>
-  <script src="./static/JS/camera.js"></script>
+    <script src="./static/JS/upload.js"></script>
+    <script src="./static/JS/camera.js"></script>
   </body>
 </html>

@@ -5,6 +5,8 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog
 from PyQt5.QtGui import QImage, QPixmap
 
+running = True
+
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -48,10 +50,10 @@ class MainWindow(QWidget):
 
     def terminateApplication(self):
         # Quit the application
-        self.cap.release()
-        cv2.destroyAllWindows()
+        # self.cap.release()
+        # cv2.destroyAllWindows()
+        running = False
         print("Closing application")
-        sys.exit(0)
     
     def resetContours(self):
         self.largestContour = None
@@ -65,7 +67,7 @@ class MainWindow(QWidget):
     
     def start_live_feed(self):
         # Loop to continuously read frames from the webcam
-        while True:
+        while running:
             # Capture frame-by-frame
             ret, frame = self.cap.read()
 
