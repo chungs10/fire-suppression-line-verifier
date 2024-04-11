@@ -99,6 +99,7 @@ ul li.active a {
     font-size: 36px;
     font-weight: 2900;
     font-style: normal;  
+    
 
 }
 
@@ -116,6 +117,7 @@ ul li.active a {
     transition: 0.6s ease;
     font-size: 18px;
     text-decoration: none;
+    background-color: #007bff;
     }
 
 .btn:hover {
