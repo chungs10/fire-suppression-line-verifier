@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var uploadButton = document.getElementById('upload');
   var analyzeButton = document.getElementById('analyze');
+  var captureTemplateButton = document.getElementById('captureImage');
 
   uploadButton.addEventListener('click', uploadImage);
   if (analyzeButton.classList.contains('simple')) {
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     analyzeButton.addEventListener('click', analyzeImage);
   }
+  captureTemplateButton.addEventListener('click', captureTemplate);
 });
 
 function uploadImage() {
@@ -50,6 +52,12 @@ function getCurrentDateTime() {
   var dateTimeString = year + '-' + month + '-' + day + '_' + hours + '-' + minutes + '-' + seconds;
   
   return dateTimeString;
+}
+
+function captureTemplate() {
+  fetch('/captureTemplate', {
+    method: 'POST'
+  });
 }
 
 function analyzeImage() {

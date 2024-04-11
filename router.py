@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import imageProcessing
+import captureTemplate
 
 app = Flask(__name__)
 
@@ -60,6 +61,11 @@ def mlAnalysis():
     
     # Return the processed data as a response
     return processed_data
+
+@app.route('/captureTemplate', methods=['POST'])
+def capTemplate():
+    captureTemplate.main()
+    return "0"
 
 if __name__ == '__main__':
     app.run(debug=True)
