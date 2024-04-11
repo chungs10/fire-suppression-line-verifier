@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var uploadButton = document.getElementById('upload');
   var analyzeButton = document.getElementById('analyze');
   var captureTemplateButton = document.getElementById('captureImage');
+  var liveAnalysisButton = document.getElementById('liveAnalysis');
 
   uploadButton.addEventListener('click', uploadImage);
   if (analyzeButton.classList.contains('simple')) {
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     analyzeButton.addEventListener('click', analyzeImage);
   }
   captureTemplateButton.addEventListener('click', captureTemplate);
+  liveAnalysisButton.addEventListener('click', liveAnalysis)
 });
 
 function uploadImage() {
@@ -56,6 +58,12 @@ function getCurrentDateTime() {
 
 function captureTemplate() {
   fetch('/captureTemplate', {
+    method: 'POST'
+  });
+}
+
+function liveAnalysis() {
+  fetch('/liveAnalysis', {
     method: 'POST'
   });
 }

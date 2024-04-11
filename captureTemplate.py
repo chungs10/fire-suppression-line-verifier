@@ -46,7 +46,7 @@ class MainWindow(QWidget):
         image_name = self.image_name_edit.text()
         if not image_name:
             return
-        image_path = f"{image_name}_{self.largestLength}.jpg"
+        image_path = f"./static/database/template/{image_name}_{self.largestLength}.jpg"
         cv2.imwrite(image_path, self.current_image)
         print(f"Image saved as {image_path}")
 
@@ -71,7 +71,7 @@ class MainWindow(QWidget):
         horizontal_contours = []
         for cnt in contours:
             x, y, wC, hC = cv2.boundingRect(cnt)
-            if hC / wC < 0.2:  # Adjust this threshold based on the expected aspect ratio of horizontal lines
+            if hC / wC < 0.05:  # Adjust this threshold based on the expected aspect ratio of horizontal lines
                 horizontal_contours.append(cnt)
 
         # Draw all horizontal contours with different colors
@@ -92,12 +92,13 @@ class MainWindow(QWidget):
                 maxindex= perimeter.index(max(perimeter))
                 self.largestContour = [horizontal_contours[maxindex+1]]                
                 
+        if not self.largestContour == None:
+            cv2.drawContours( vis, self.largestContour, 0, (0,255,0), 50)
+            cv2.drawContours( vis2, self.largestContour, 0, (0,255,0), 50)
+        
         if len(perimeter) == 0:
             blended_img = cv2.addWeighted(cv2.cvtColor(img, cv2.COLOR_GRAY2BGR), 1-alpha, vis, alpha, 0)
             return blended_img
-
-        if not self.largestContour == None:
-            cv2.drawContours( vis2, self.largestContour, 0, (0,255,0), 50)
 
         # Overlay 'vis' on top of 'img'
         blended_img = cv2.addWeighted(cv2.cvtColor(img, cv2.COLOR_GRAY2BGR), 1-alpha, vis2, alpha, 0)

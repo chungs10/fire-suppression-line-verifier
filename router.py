@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import imageProcessing
 import captureTemplate
+import twoPics
 
 app = Flask(__name__)
 
@@ -67,5 +68,10 @@ def capTemplate():
     captureTemplate.main()
     return "0"
 
+@app.route('/liveAnalysis', methods=['POST'])
+def liveAnalysis():
+    twoPics.main()
+    return "0"
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
