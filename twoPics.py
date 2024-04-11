@@ -37,7 +37,7 @@ class MainWindow(QWidget):
         # layout.addWidget(self.quit_button)
         self.setLayout(layout)
         
-        self.destroyed.connect(self.terminateApplication)
+        # self.destroyed.connect(self.terminateApplication)
         # self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowMinimizeButtonHint)
 
         # Open the video capture device (default webcam)
@@ -48,12 +48,12 @@ class MainWindow(QWidget):
             print("Error: Could not open webcam.")
             sys.exit(1)
 
+
     def terminateApplication(self):
         # Quit the application
-        # self.cap.release()
+        self.cap.release()
         # cv2.destroyAllWindows()
         running = False
-        print("Closing application")
     
     def resetContours(self):
         self.largestContour = None
@@ -174,8 +174,11 @@ def main():
     window.resize(800, 600)
     window.show()
     
+    res = app.exec_()
     app.aboutToQuit.connect(window.terminateApplication)
-    sys.exit(app.exec_())
+    window.cap.release()
+    cv2.destroyAllWindows()
+    sys.exit(res)
 
 if __name__ == "__main__":
     pass
