@@ -60,22 +60,8 @@
         localStorage.setItem('selectConfirmation', 'unconfirmed')
         localStorage.setItem('submitConfirmation', 'unconfirmed')
         updateProgressBar()
-      })
-      function updateProgressBar() {
-        // Retrieve confirmation status for each action from localStorage
-        var fireConfirmation = localStorage.getItem('fireConfirmation')
-        var strapConfirmation = localStorage.getItem('strapConfirmation')
-        var weightConfirmation = localStorage.getItem('weightConfirmation')
-        var selectConfirmation = localStorage.getItem('selectConfirmation')
-        var submitConfirmation = localStorage.getItem('submitConfirmation')
-      
-        // Update the progress slots based on confirmation status
-        updateSlot('fire', fireConfirmation)
-        updateSlot('strap', strapConfirmation)
-        updateSlot('weight', weightConfirmation)
-        updateSlot('select', selectConfirmation)
-        updateSlot('submit', submitConfirmation)
-      }
+      });
     </script>
+    <script src="./static/JS/script.js"></script>
   </body>
 </html>

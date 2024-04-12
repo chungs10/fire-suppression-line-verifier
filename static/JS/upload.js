@@ -39,20 +39,20 @@ function uploadImage() {
 
 function getCurrentDateTime() {
   var currentDate = new Date();
-  
+
   // Get the date components
   var year = currentDate.getFullYear();
   var month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Months are zero-based
   var day = ('0' + currentDate.getDate()).slice(-2);
-  
+
   // Get the time components
   var hours = ('0' + currentDate.getHours()).slice(-2);
   var minutes = ('0' + currentDate.getMinutes()).slice(-2);
   var seconds = ('0' + currentDate.getSeconds()).slice(-2);
-  
+
   // Construct the date and time string in the desired format
   var dateTimeString = year + '-' + month + '-' + day + '_' + hours + '-' + minutes + '-' + seconds;
-  
+
   return dateTimeString;
 }
 
@@ -130,9 +130,24 @@ function displayImage(filePath) {
   const video = document.getElementById('video');
   var imageContainer = document.getElementsByClassName("box-result")[0];
   imageContainer.innerHTML = ''; // Clear previous content
-    
+
   var img = new Image();
   img.src = filePath;
   img.style.width = "300px";
   imageContainer.appendChild(img);
+}
+
+function confirmFireAction() {
+  // Set confirmation flag for fire action in localStorage
+  localStorage.setItem('fireConfirmation', 'confirmed')
+}
+
+function confirmStrapAction() {
+  // Set confirmation flag for strap action in localStorage
+  localStorage.setItem('strapConfirmation', 'confirmed')
+}
+
+function confirmWeightAction() {
+  // Set confirmation flag for weight action in localStorage
+  localStorage.setItem('weightConfirmation', 'confirmed')
 }

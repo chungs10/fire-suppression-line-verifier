@@ -33,7 +33,7 @@ def capture():
 def strap():
     return render_template('./strap.html')
 
-@app.route('/simpleAnalysis', methods=['POST'])
+@app.route('/simpleAnalysis', methods=['POST', 'GET'])
 def simpleAnalysis():
     # Get data from the request
     base64image = request.form['base64image']
@@ -48,7 +48,7 @@ def simpleAnalysis():
     # Return the processed data as a response
     return processed_data
 
-@app.route('/mlAnalysis', methods=['POST'])
+@app.route('/mlAnalysis', methods=['POST', 'GET'])
 def mlAnalysis():
     # Get data from the request
     base64image = request.form['base64image']
@@ -63,12 +63,12 @@ def mlAnalysis():
     # Return the processed data as a response
     return processed_data
 
-@app.route('/captureTemplate', methods=['POST'])
+@app.route('/captureTemplate', methods=['POST', 'GET'])
 def capTemplate():
     captureTemplate.main()
     return "0"
 
-@app.route('/liveAnalysis', methods=['POST'])
+@app.route('/liveAnalysis', methods=['POST', 'GET'])
 def liveAnalysis():
     twoPics.main()
     return "0"
