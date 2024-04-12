@@ -1,52 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title> United Airlines</title>
-    <link rel="stylesheet" type="text/css" href="./static/CSS/home.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Butterfly+Kids&family=Rakkas&display=swap" rel="stylesheet">
+  <head>
+    <title>United Airlines</title>
+    <link rel="stylesheet" type="text/css" href="./static/CSS/home.css" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Butterfly+Kids&family=Rakkas&display=swap" rel="stylesheet" />
     <style>
-        body{
+      body {
         background-image: url('./static/Images/6_image.jpg');
-        z-index:-1;
-        }
+        z-index: -1;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="background-color"></div> 
-          <video autoplay muted loop id="video-bg">
-            <source src="./static/Video/video_1.mp4" type="video/mp4">
-            Home Page Video tag.
-         </video>
-	    	<div class="main">
-            <div class="logo">
-                <a href="{{ url_for('home') }}"> 
-                    <img src="./static/Images/united_1.jpg">
-                </a>
-            </div>
-			
-            <ul>
-                <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
+      <div class="background-color"></div>
+      <video autoplay muted loop id="video-bg">
+        <source src="./static/Video/video_1.mp4" type="video/mp4" />Home Page Video tag.
+      </video>
+      <div class="main">
+        <div class="logo">
+          <a href="{{ url_for('home') }}"><img src="./static/Images/united_1.jpg" /></a>
         </div>
 
-        <div class="title">
-            <h1>AIRCRAFT LOADING APPLICATION</h1>
-        </div>
-        <div class="sub_title">
-            <h3>Good Leads the Way</h3>
-        </div>
+        <ul>
+          <li class="active">
+            <a href="#"><i class="fa fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Login</a>
+          </li>
+        </ul>
+      </div>
 
-        <!--Get started button-->
-        <div class="button">
-            <a href="{{ url_for('select') }}" class="btn">GET STARTED</a>
-        </div>
+      <div class="title">
+        <h1>AIRCRAFT LOADING APPLICATION</h1>
+      </div>
+      <div class="sub_title">
+        <h3>Good Leads the Way</h3>
+      </div>
+
+      <!-- Get started button -->
+      <div class="button">
+        <a href="{{ url_for('select') }}" class="btn">GET STARTED</a>
+      </div>
     </header>
-</body>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Reset confirmation status for weight action to "unconfirmed"
+        localStorage.setItem('fireConfirmation', 'unconfirmed')
+        localStorage.setItem('strapConfirmation', 'unconfirmed')
+        localStorage.setItem('weightConfirmation', 'unconfirmed')
+        localStorage.setItem('selectConfirmation', 'unconfirmed')
+        localStorage.setItem('submitConfirmation', 'unconfirmed')
+        updateProgressBar()
+      })
+      function updateProgressBar() {
+        // Retrieve confirmation status for each action from localStorage
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+        var selectConfirmation = localStorage.getItem('selectConfirmation')
+        var submitConfirmation = localStorage.getItem('submitConfirmation')
+      
+        // Update the progress slots based on confirmation status
+        updateSlot('fire', fireConfirmation)
+        updateSlot('strap', strapConfirmation)
+        updateSlot('weight', weightConfirmation)
+        updateSlot('select', selectConfirmation)
+        updateSlot('submit', submitConfirmation)
+      }
+    </script>
+  </body>
 </html>

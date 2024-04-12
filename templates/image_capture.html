@@ -11,25 +11,14 @@
     <style>
       .submit-verification-btn {
         margin: 20px auto;
-        margin: 20px auto;
-        padding: 10px 20px;
         padding: 10px 20px;
         background-color: #007bff;
-        background-color: #007bff;
         color: #fff;
-        color: #fff;
-        border: none;
         border: 3px solid #fff;
-        border-radius: 5px;
         cursor: pointer;
-        cursor: pointer;
-        margin-top: 32%;
         margin-top: 27%;
-        margin-left: 43%;
-        margin-left: 43%;
-        font-size: 16px;
+        margin-left: 42%;
         font-size: 18px;
-        transition: background-color 0.3s ease;
         transition: 0.6s ease;
       }
       
@@ -37,11 +26,25 @@
         background-color: #fff;
         color: #000;
       }
+      
       .logo {
         float: left; /* Float the logo to the right */
         margin-right: 20px; /* Add margin to the right to create space */
         position: relative; /* Set position to relative */
         top: -10px; /* Move the logo 20px up */
+      }
+      /* Styling for "Ready" status */
+      .ready {
+        background-color: #1fd655; /* Green background */
+        color: black; /* White text */
+        font-weight: bold;
+      }
+      
+      /* Styling for "Not Ready" status */
+      .not-ready {
+        background-color: #ff4b4b; /* Red background */
+        color: black; /* White text */
+        font-weight: bold;
       }
     </style>
   </head>
@@ -64,47 +67,166 @@
     </div>
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar">
-        <div class="progress-slot progress-filled">Select</div>
-        <div class="progress-slot progress-filled">Weight</div>
-        <div class="progress-slot progress-filled">Fire</div>
-        <div class="progress-slot progress-filled">Strap</div>
-        <div class="progress-slot progress-filled">Submit</div>
+        <div class="progress-slot" id="progress-slot-select">
+          <a href="{{ url_for('select') }}">Select</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-weight">
+          <a href="{{ url_for('weight') }}">Weight</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-fire">
+          <a href="{{ url_for('fire') }}">Fire</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-strap">
+          <a href="{{ url_for('strap') }}">Strap</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-submit">
+          <a href="{{ url_for('capture') }}">Submit</a>
+        </div>
       </div>
     </div>
 
     <table class="checklist">
       <tr>
-        <th>Luggage Check List</th>
-        <th>Status</th>
+        <th style="background-color:#007bff; color:white;">LUGGAGE CHECK LIST</th>
+        <th style="background-color:#007bff; color:white;">STATUS</th>
       </tr>
       <tr>
-        <td style="background-color:#051464; color:white;">
+        <td style="background-color:white; color:black; ">
           <a href="{{ url_for('weight') }}">Weight Distribution</a>
         </td>
-        <td style="background-color:#551E5F; color:white;">Not Ready</td>
+        <td id="weightStatus" class="not-ready">Not Ready</td>
       </tr>
       <tr>
-        <td style="background-color:#FF4B4B; color:white;">
+        <td style="background-color:white; color:black; ">
           <a href="{{ url_for('fire') }}">Fire Suppression Line</a>
         </td>
-        <td style="background-color:#7D283C; color:white;">Not Ready</td>
+        <td id="fireStatus" class="not-ready">Not Ready</td>
       </tr>
       <tr>
-        <td style="background-color:#696E28; color:white;">
+        <td style="background-color:white; color:black; ">
           <a href="{{ url_for('strap') }}">Luggage Lockdown</a>
         </td>
-        <td style="background-color:#2D4637; color:white;">Not Ready</td>
+        <td id="strapStatus" class="not-ready">Not Ready</td>
       </tr>
     </table>
-    <button class="submit-verification-btn" onclick="submitVerification()">Submit Verification</button>
+    <button class="submit-verification-btn" onclick="showPopup()">Submit Verification</button>
+    <a href="{{ url_for('strap') }}" class="back-button"><span>&larr;</span> Back</a>
 
     <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Retrieve confirmation status for each action from localStorage
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+      
+        // Update the status in the checklist based on confirmation status
+        updateStatus('fireStatus', fireConfirmation)
+        updateStatus('strapStatus', strapConfirmation)
+        updateStatus('weightStatus', weightConfirmation)
+      
+        updateProgressBar()
+        confirmSubmitAction() // Call the function here
+      })
+      
+      function showPopup() {
+        // Create a popup window with a message
+        var popup = window.open('', '_blank', 'width=800,height=400')
+        popup.document.write('<html><head><title>Thank You!</title><link rel="stylesheet" type="text/css" href="./static/CSS/styles.css"></head><body>')
+        popup.document.write('<div class="popup-container">')
+        popup.document.write('<h2 class="popup-heading">Thank You!</h2>')
+        popup.document.write('<p class="popup-message">Redirecting back to home page in <span id="countdown">5</span> seconds...</p>')
+        popup.document.write('</div>')
+        popup.document.write('</body></html>')
+      
+        // Start countdown
+        var countdown = 5
+        var countdownInterval = setInterval(function () {
+          countdown--
+          popup.document.getElementById('countdown').textContent = countdown
+          if (countdown <= 0) {
+            clearInterval(countdownInterval)
+            popup.close()
+            // Redirect to the home page after countdown
+            window.location.href = "{{ url_for('home') }}";
+          }
+        }, 1000)
+      }
       function submitVerification() {
-        // Redirect to another page for verification submission
-        window.location.href = "{{ url_for('end') }}"
+        // Your verification submission logic here
+      
+        // For demonstration purposes, let's toggle the confirmation status
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        localStorage.setItem('fireConfirmation', fireConfirmation === 'confirmed' ? 'unconfirmed' : 'confirmed')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        localStorage.setItem('strapConfirmation', strapConfirmation === 'confirmed' ? 'unconfirmed' : 'confirmed')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+        localStorage.setItem('weightConfirmation', weightConfirmation === 'confirmed' ? 'unconfirmed' : 'confirmed')
+      
+        // Update the status in the checklist based on the new confirmation status
+        updateStatus('fireStatus', localStorage.getItem('fireConfirmation'))
+        updateStatus('strapStatus', localStorage.getItem('strapConfirmation'))
+        updateStatus('weightStatus', localStorage.getItem('weightConfirmation'))
+      }
+      
+      function updateStatus(elementId, confirmationStatus) {
+        var element = document.getElementById(elementId)
+        if (confirmationStatus === 'confirmed') {
+          element.textContent = 'Ready'
+          element.classList.remove('not-ready') // Remove not-ready class
+          element.classList.add('ready') // Add the "ready" class for styling
+        } else {
+          element.textContent = 'Not Ready'
+          element.classList.remove('ready') // Remove ready class
+          element.classList.add('not-ready') // Add the "not-ready" class for styling
+        }
+      }
+      function updateProgressBar() {
+        // Retrieve confirmation status for each action from localStorage
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+        var selectConfirmation = localStorage.getItem('selectConfirmation')
+        var submitConfirmation = localStorage.getItem('submitConfirmation')
+      
+        // Update the progress slots based on confirmation status
+        updateSlot('fire', fireConfirmation)
+        updateSlot('strap', strapConfirmation)
+        updateSlot('weight', weightConfirmation)
+        updateSlot('select', selectConfirmation)
+        updateSlot('submit', submitConfirmation)
+      }
+      
+      function updateSlot(action, confirmationStatus) {
+        var slot = document.getElementById('progress-slot-' + action)
+        if (confirmationStatus === 'confirmed') {
+          slot.classList.add('progress-filled')
+        } else {
+          slot.classList.remove('progress-filled')
+        }
+      }
+      
+      function confirmSubmitAction() {
+        // Check if all actions (fire, strap, weight) are confirmed
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+      
+        // Check if any action is not confirmed
+        if (fireConfirmation !== 'confirmed' || strapConfirmation !== 'confirmed' || weightConfirmation !== 'confirmed') {
+          // If any action is not confirmed, set submit action to unconfirmed and return
+          localStorage.setItem('submitConfirmation', 'unconfirmed')
+          updateSlot('submit', 'unconfirmed') // Update the slot immediately
+          return
+        }
+      
+        // If all actions are confirmed, set confirmation flag for submit action in localStorage
+        localStorage.setItem('submitConfirmation', 'confirmed')
+      
+        // Update progress bar
+        updateProgressBar()
+        var submitConfirmation = localStorage.getItem('submitConfirmation') // Retrieve the updated confirmation status
+        updateSlot('submit', submitConfirmation) // Update the slot accordingly
       }
     </script>
-
-    <!-- <script src="index.js"></script> -->
   </body>
 </html>

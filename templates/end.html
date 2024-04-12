@@ -1,94 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>My Website</title>
-    <link rel="stylesheet" href="./static/CSS/styles.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./static/CSS/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./static/CSS/styles.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <style>
-     .foreground-image {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    width: 50%; /* Adjust width as needed */
-    height: 50%; /* Adjust height as needed */
-    background-image: url('./static/Images/removed back ground.png'); /* Set the path to your foreground image */
-    background-size: cover; /* Adjust background size as needed */
-    background-repeat: no-repeat;
-    z-index: 1; /* Ensure the foreground image appears above the black bar */
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin-top: -30px; 
-}
-.top-words {
-  text-align: center;
-  margin-bottom: 20px; /* Adjust spacing between top words and bottom word */
-  color:white;
-  font-size:5em;
-}
-
-.top-words span {
-  display: block;
-  
-}
-
-.bottom-word {
-  text-align: center;
-  font-size:2em;
-}
-.start-btn {
-  background-color: #007bff; /* Button background color */
-  display: inline-block;
-  color: #fff; /* Button text color */
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  text-decoration: none; /* Remove default underline */
-  cursor: pointer;
-  position: absolute;
-  top: 20px; /* Adjust the distance from the top */
-  left: 50%; /* Center horizontally */
-  top:80%;
-  transform: translateX(-50%); /* Center horizontally */
-  z-index: 1; /* Ensure the button appears above other content */
-}
-
-
-.get-started-btn:hover {
-    background-color: #0056b3; /* Change color on hover */
-}
-
+      .submit-verification-btn {
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: 3px solid #fff;
+        cursor: pointer;
+        margin-top: 27%;
+        margin-left: 42%;
+        font-size: 18px;
+        transition: 0.6s ease;
+      }
+      
+      .submit-verification-btn:hover {
+        background-color: #fff;
+        color: #000;
+      }
+      
+      .logo {
+        float: left; /* Float the logo to the right */
+        margin-right: 20px; /* Add margin to the right to create space */
+        position: relative; /* Set position to relative */
+        top: -10px; /* Move the logo 20px up */
+      }
+      /* Styling for "Ready" status */
+      .ready {
+        background-color: #1fd655; /* Green background */
+        color: black; /* White text */
+        font-weight: bold;
+      }
+      
+      /* Styling for "Not Ready" status */
+      .not-ready {
+        background-color: #ff4b4b; /* Red background */
+        color: black; /* White text */
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
-    <div class="black-bar">
-      <img src="./static/Images/icon.png" alt="Another Image" class="right-image">
-      <div class = "circle"></div>
-        <span class="title">United</span>
-    </div>
-    
-    <div class="foreground-image"></div>
-    <div class="container">
-      <div class="top-words">
-        <span>Thank You</span>
+    <div class="main">
+      <div class="logo">
+        <a href="home.html"><img src="./static/Images/united_1.jpg" /></a>
       </div>
-      <div class="bottom-word">
-        <span>Have a nice flight!</span>
-      </div>
+
+      <ul>
+        <li class="active">
+          <a href="#"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <div class="circle"></div>
+        <img src="./static/Images/icon.png" alt="Another Image" class="right-image" />
+      </ul>
     </div>
-    <!-- <button class="airplane-choice">Select Airplane</button> -->
-    <!--   -->
-
-    
-
   </body>
 </html>

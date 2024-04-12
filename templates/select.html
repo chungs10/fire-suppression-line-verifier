@@ -1,107 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>My Website</title>
-    <link rel="stylesheet" type="text/css" href="./static/CSS/styles.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./static/CSS/styles.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <style>
-     .foreground-image {
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* Adjust width as needed */
-    height: 80%; /* Adjust height as needed */
-    background-image: url('./static/Images/removed back ground.png'); /* Set the path to your foreground image */
-    background-size: cover; /* Adjust background size as needed */
-    background-repeat: no-repeat;
-    z-index: 1; /* Ensure the foreground image appears above the black bar */
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin-top: -30px; 
-}
-.top-words {
-  text-align: center;
-  margin-bottom: 20px; /* Adjust spacing between top words and bottom word */
-  color:white;
-  font-size:5em;
-}
-
-.top-words span {
-  display: block;
-  
-}
-
-.bottom-word {
-  text-align: center;
-  font-size:2em;
-}
-
-    .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-} 
+      .foreground-image {
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        width: 80%; /* Adjust width as needed */
+        height: 80%; /* Adjust height as needed */
+        background-image: url('./static/Images/removed back ground.png'); /* Set the path to your foreground image */
+        background-size: cover; /* Adjust background size as needed */
+        background-repeat: no-repeat;
+        z-index: 1; /* Ensure the foreground image appears above the black bar */
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-top: -30px;
+      }
+      .top-words {
+        text-align: center;
+        margin-bottom: 20px; /* Adjust spacing between top words and bottom word */
+        color: white;
+        font-size: 5em;
+      }
+      
+      .top-words span {
+        display: block;
+      }
+      
+      .bottom-word {
+        text-align: center;
+        font-size: 2em;
+      }
+      
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
     </style>
   </head>
   <body>
-    
     <div class="main">
       <div class="logo">
-        <a href="{{ url_for('home') }}">  
-              <img src="./static/Images/united_1.jpg">
-          </a>
+        <a href="{{ url_for('home') }}"><img src="./static/Images/united_1.jpg" /></a>
       </div>
 
       <ul>
-          <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
-          <li><a href="#">About</a></li>
-          <div class = "circle"></div>
-          <img src="./static/Images/icon.png" alt="Another Image" class="right-image">
+        <li class="active">
+          <a href="#"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <div class="circle"></div>
+        <img src="./static/Images/icon.png" alt="Another Image" class="right-image" />
       </ul>
-  </div>
-    
+    </div>
+
     <!-- <div class="foreground-image"></div> -->
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar">
-        <div class="progress-slot progress-filled">Select</div>
-          <div class="progress-slot" id="progress-slot-2">Weight</div>
-          <div class="progress-slot" id="progress-slot-3">Fire</div>
-          <div class="progress-slot" id="progress-slot-4">Strap</div>
-          <div class="progress-slot" id="progress-slot-5">Submit</div>
+        <div class="progress-slot" id="progress-slot-select">
+          <a href="{{ url_for('select') }}">Select</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-weight">
+          <a href="{{ url_for('weight') }}">Weight</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-fire">
+          <a href="{{ url_for('fire') }}">Fire</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-strap">
+          <a href="{{ url_for('strap') }}">Strap</a>
+        </div>
+        <div class="progress-slot" id="progress-slot-submit">
+          <a href="{{ url_for('capture') }}">Submit</a>
+        </div>
       </div>
-  </div>
-  
+    </div>
+
     <!-- Dropdown menu -->
     <div class="dropdown-menu" id="dropdownMenu">
-        <label for="dog-names" class="sr-only">Select an Airplane:</label> 
-        <select name="dog-names" id="dog-names"> 
-            <option value="" disabled selected>Select an Airplane</option>
-            <option value="Boeing 777">Boeing 777</option> 
-            <option value="Boeing 787">Boeing 787</option> 
-            <option value="Boeing 737">Boeing 737</option> 
-            <option value="Boeing 757">Boeing 757</option> 
-            <option value="Airbus">Airbus</option> 
-        </select>
+      <label for="dog-names" class="sr-only">Select an Airplane:</label>
+      <select name="dog-names" id="dog-names" onchange="confirmSelectAction()">
+        <option value="" disabled selected>Select an Airplane</option>
+        <option value="Boeing 777">Boeing 777</option>
+        <option value="Boeing 787">Boeing 787</option>
+        <option value="Boeing 737">Boeing 737</option>
+        <option value="Boeing 757">Boeing 757</option>
+        <option value="Airbus">Airbus</option>
+      </select>
     </div>
-   
+
     <!-- <button class="airplane-choice">Select Airplane</button> -->
     <a href="{{ url_for('weight') }}" class="get-started-btn">Continue <span>&rarr;</span></a>
     <script src="./static/JS/script.js"></script>
-    
-
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Reset confirmation status for weight action to "unconfirmed"
+        localStorage.setItem('fireConfirmation', 'unconfirmed')
+        localStorage.setItem('strapConfirmation', 'unconfirmed')
+        localStorage.setItem('weightConfirmation', 'unconfirmed')
+        localStorage.setItem('selectConfirmation', 'unconfirmed')
+        localStorage.setItem('submitConfirmation', 'unconfirmed')
+        updateProgressBar()
+      })
+      
+      function confirmSelectAction() {
+        // Set confirmation flag for select action in localStorage
+        localStorage.setItem('selectConfirmation', 'confirmed')
+      }
+      function updateProgressBar() {
+        // Retrieve confirmation status for each action from localStorage
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+        var selectConfirmation = localStorage.getItem('selectConfirmation')
+        var submitConfirmation = localStorage.getItem('submitConfirmation')
+      
+        // Update the progress slots based on confirmation status
+        updateSlot('fire', fireConfirmation)
+        updateSlot('strap', strapConfirmation)
+        updateSlot('weight', weightConfirmation)
+        updateSlot('select', selectConfirmation)
+        updateSlot('submit', submitConfirmation)
+      }
+      
+      function updateSlot(action, confirmationStatus) {
+        var slot = document.getElementById('progress-slot-' + action)
+        if (confirmationStatus === 'confirmed') {
+          slot.classList.add('progress-filled')
+        } else {
+          slot.classList.remove('progress-filled')
+        }
+      }
+      function confirmSubmitAction() {
+        // Check if all actions (fire, strap, weight) are confirmed
+        var fireConfirmation = localStorage.getItem('fireConfirmation')
+        var strapConfirmation = localStorage.getItem('strapConfirmation')
+        var weightConfirmation = localStorage.getItem('weightConfirmation')
+      
+        // Check if any action is not confirmed
+        if (fireConfirmation !== 'confirmed' || strapConfirmation !== 'confirmed' || weightConfirmation !== 'confirmed') {
+          // If any action is not confirmed, set submit action to unconfirmed and return
+          localStorage.setItem('submitConfirmation', 'unconfirmed')
+          updateSlot('submit', 'unconfirmed') // Update the slot immediately
+          return
+        }
+      
+        // If all actions are confirmed, set confirmation flag for submit action in localStorage
+        localStorage.setItem('submitConfirmation', 'confirmed')
+      
+        // Update progress bar
+        updateProgressBar()
+        var submitConfirmation = localStorage.getItem('submitConfirmation') // Retrieve the updated confirmation status
+        updateSlot('submit', submitConfirmation) // Update the slot accordingly
+      }
+    </script>
   </body>
 </html>
