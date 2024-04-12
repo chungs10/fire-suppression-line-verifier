@@ -36,15 +36,15 @@
           <img src="../Images/icon.png" alt="Another Image" class="right-image">
       </ul>
   </div>
-    <div class="progress-container">
-      <div class="progress-bar" id="progress-bar">
-        <div class="progress-slot progress-filled">Select</div>
-          <div class="progress-slot progress-filled">Weight</div>
-          <div class="progress-slot progress-filled">Fire</div>
-          <div class="progress-slot progress-filled">Strap</div>
-          <div class="progress-slot" id="progress-slot-5">Submit</div>
-      </div>
-  </div>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar">
+        <div class="progress-slot" id="progress-slot-select"><a href="select.html">Select</a></div>
+        <div class="progress-slot" id="progress-slot-weight"><a href="weight.html">Weight</a></div>
+        <div class="progress-slot" id="progress-slot-fire"><a href="fire.html">Fire</a></div>
+        <div class="progress-slot" id="progress-slot-strap"><a href="strap.html">Strap</a></div>
+        <div class="progress-slot" id="progress-slot-submit"><a href="image_capture.html">Submit</a></div>
+    </div>
+</div>
   
     
     
@@ -73,11 +73,71 @@
       document.addEventListener("DOMContentLoaded", function() {
             // Reset confirmation status for strap action to "unconfirmed"
             localStorage.setItem('strapConfirmation', 'unconfirmed');
+            updateProgressBar();
+            confirmSubmitAction();
         });
+      document.addEventListener("DOMContentLoaded", function() {
+        // Retrieve confirmation status for each action from localStorage
+        var fireConfirmation = localStorage.getItem('fireConfirmation');
+        var strapConfirmation = localStorage.getItem('strapConfirmation');
+        var weightConfirmation = localStorage.getItem('weightConfirmation');
+        var selectConfirmation = localStorage.getItem('selectConfirmation');
+        var submitConfirmation = localStorage.getItem('submitConfirmation');
+
+        // Update the progress bar
+        updateProgressBar(fireConfirmation, strapConfirmation, weightConfirmation, selectConfirmation, submitConfirmation);
+    });
       function confirmStrapAction() {
           // Set confirmation flag for strap action in localStorage
           localStorage.setItem('strapConfirmation', 'confirmed');
       }
+        function updateProgressBar() {
+          // Retrieve confirmation status for each action from localStorage
+          var fireConfirmation = localStorage.getItem('fireConfirmation');
+          var strapConfirmation = localStorage.getItem('strapConfirmation');
+          var weightConfirmation = localStorage.getItem('weightConfirmation');
+          var selectConfirmation = localStorage.getItem('selectConfirmation');
+          var submitConfirmation = localStorage.getItem('submitConfirmation');
+
+          // Update the progress slots based on confirmation status
+          updateSlot('fire', fireConfirmation);
+          updateSlot('strap', strapConfirmation);
+          updateSlot('weight', weightConfirmation);
+          updateSlot('select', selectConfirmation);
+          updateSlot('submit', submitConfirmation);
+      }
+
+      function updateSlot(action, confirmationStatus) {
+          var slot = document.getElementById('progress-slot-' + action);
+          if (confirmationStatus === 'confirmed') {
+              slot.classList.add('progress-filled');
+          } else {
+              slot.classList.remove('progress-filled');
+          }
+      }
+      function confirmSubmitAction() {
+        // Check if all actions (fire, strap, weight) are confirmed
+        var fireConfirmation = localStorage.getItem('fireConfirmation');
+        var strapConfirmation = localStorage.getItem('strapConfirmation');
+        var weightConfirmation = localStorage.getItem('weightConfirmation');
+
+        // Check if any action is not confirmed
+        if (fireConfirmation !== 'confirmed' || strapConfirmation !== 'confirmed' || weightConfirmation !== 'confirmed') {
+            // If any action is not confirmed, set submit action to unconfirmed and return
+            localStorage.setItem('submitConfirmation', 'unconfirmed');
+            updateSlot('submit', 'unconfirmed'); // Update the slot immediately
+            return;
+        }
+
+        // If all actions are confirmed, set confirmation flag for submit action in localStorage
+        localStorage.setItem('submitConfirmation', 'confirmed');
+
+        // Update progress bar
+        updateProgressBar();
+        var submitConfirmation = localStorage.getItem('submitConfirmation'); // Retrieve the updated confirmation status
+        updateSlot('submit', submitConfirmation); // Update the slot accordingly
+    }
+      
   </script>
 
 	<script src="../JS/upload.js"></script>

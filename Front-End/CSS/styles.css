@@ -39,6 +39,16 @@ body, html {
     background-color: #1fd655;
     color: black;
 }
+/* Remove underline from links */
+.progress-slot a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+}
+
+/* Style for when links are hovered */
+.progress-slot a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
 
 
 
@@ -501,4 +511,23 @@ body, html {
     .main ul li:hover .sub-menu ul li:last-child {
         border-bottom: none;
     }
+    .popup-container {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 200px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .popup-heading {
+        text-align: center;
+        color: #007bff;
+    }
     
+    .popup-message {
+        text-align: center;
+    }
