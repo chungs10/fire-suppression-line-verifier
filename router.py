@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS
 import imageProcessing
 import captureTemplate
 import twoPics
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def home():
@@ -59,9 +61,10 @@ def mlAnalysis():
     
     # Process the data (dummy function for demonstration)
     processed_data = imageProcessing.main(imagePath)
+    result = imageProcessing.process_and_save_image(imagePath, processed_data)
     
     # Return the processed data as a response
-    return processed_data
+    return result
 
 @app.route('/captureTemplate', methods=['POST', 'GET'])
 def capTemplate():

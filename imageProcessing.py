@@ -4,8 +4,17 @@ import os
 import base64
 from PIL import Image
 from io import BytesIO
-from keras.models import load_model
-model = load_model('united_model_v1.h5')
+from tensorflow.keras.models import Sequential, model_from_json
+
+json_file = open('united_model.json', 'r')
+loaded_model_json = json_file.read()
+json_file.close()
+loaded_model = model_from_json(loaded_model_json)
+# load weights into new model
+loaded_model.load_weights("united_model.weights.h5")
+print("Loaded model from disk")
+
+loaded_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 def image_to_array(image_path):
     # Read the image using OpenCV
@@ -85,12 +94,26 @@ def process_and_save_image(image_path, state):
         return new_file_path
 
 def base64_to_image(base64_string, output_path):
+    # Split the base64 string to separate the MIME type and the actual base64 data
     base64_string = base64_string.split(',')[1]
+
     # Decode the base64 string to bytes
     image_bytes = base64.b64decode(base64_string)
 
+    # Create a BytesIO object from the bytes
+    image_file = BytesIO(image_bytes)
+
     # Open the image using PIL
-    image = Image.open(BytesIO(image_bytes))
+    image = Image.open(image_file)
+
+    # Determine the file extension from the output path
+    file_extension = output_path.split('.')[-1].lower()
+
+    # If the output format is JPEG and the image mode is RGBA (with alpha channel),
+    # convert the image to RGB mode to remove transparency
+    if file_extension == 'jpg' or file_extension == 'jpeg':
+        if image.mode == 'RGBA':
+            image = image.convert('RGB')
 
     # Save the image to the specified output path
     image.save(output_path)
@@ -98,11 +121,13 @@ def base64_to_image(base64_string, output_path):
 def main(image_path):
     # Preprocess the image
     img_arr = image_to_array(image_path)
-    preprocessed_image = preprocess_image(img_arr, image_size=(369, 573))
+    #im = preprocess_image(img_arr, image_size=(369, 573))
+    im = img_arr.reshape(1,369, 573, 3)
+    im = im/255.0
 
     # Make predictions using the trained model
-    predictions = model.predict(preprocessed_image)[0][0]
-    result = process_and_save_image(image_path, predictions)
+    prediction = loaded_model.predict(im)
+    result = (prediction > 0.5).astype(int)[0][0] ## return image as integer
     return result
     
 if __name__ == '__main__':

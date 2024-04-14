@@ -86,6 +86,7 @@ function analyzeImage() {
     })
       .then(response => response.text())
       .then(result => {
+        updateFireState(result);
         displayImage(result);
         // Record the result here
       })
@@ -150,4 +151,16 @@ function confirmStrapAction() {
 function confirmWeightAction() {
   // Set confirmation flag for weight action in localStorage
   localStorage.setItem('weightConfirmation', 'confirmed')
+}
+
+function updateFireState(filePath) {
+  const parts = filePath.split('__');
+  if (parts.length >= 2) {
+      const state = parts[1].split('.');
+      if(state[0] == "pass") {
+        localStorage.setItem('fireConfirmation', 'confirmed');
+      } else {
+        localStorage.setItem('fireConfirmation', 'unconfirmed')
+      }
+  }
 }
