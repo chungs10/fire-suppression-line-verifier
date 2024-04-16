@@ -7,8 +7,6 @@ body, html {
     background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center;
-  /* Optional: Ensures the background image covers the entire viewport */
-  /* You can remove this if you want the image to repeat */
   height: 100vh;
   overflow: hidden;
 }
@@ -197,7 +195,6 @@ body, html {
     justify-content: center;
     align-items: center;
     margin-left:-1em;
-    margin-top:%;
 }
 
 .box-capture img {

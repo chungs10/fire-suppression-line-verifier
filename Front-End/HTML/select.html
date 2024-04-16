@@ -1,143 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <style>
-     .foreground-image {
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* Adjust width as needed */
-    height: 80%; /* Adjust height as needed */
-    background-image: url('../Images/removed back ground.png'); /* Set the path to your foreground image */
-    background-size: cover; /* Adjust background size as needed */
-    background-repeat: no-repeat;
-    z-index: 1; /* Ensure the foreground image appears above the black bar */
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin-top: -30px; 
-}
-.top-words {
-  text-align: center;
-  margin-bottom: 20px; /* Adjust spacing between top words and bottom word */
-  color:white;
-  font-size:5em;
-}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>My Website</title>
+<link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+<style>
+  body {
+        background: none; /* Clear background */
+    }
+    .container {
+        text-align: center;
+        margin-top: 9h; /* Adjusted margin-top */
+    }
 
-.top-words span {
-  display: block;
-  
-}
+    .top-words {
+        text-align: center;
+        margin-top: 20px;
+        color: white;
+        font-size: 3em;
+    }
 
-.bottom-word {
-  text-align: center;
-  font-size:2em;
-}
+    .top-words span {
+        display: block;
+    }
 
-    .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-} 
-    </style>
-  </head>
-  <body>
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 20%;
+        margin-top:50px;
+    }
+
     
-    <div class="main">
-      <div class="logo">
+    /* Existing styles */
+    .plane-button {
+        padding: 10px 20px; /* Adjust padding if necessary */
+        width: 300px; /* Set a fixed width for the buttons */
+        margin-bottom: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center; /* Center the text horizontally */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide any overflowing text */
+        text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
+        font-weight:bold;
+    }
+
+
+    .plane-button:hover {
+        background-color: #0056b3;
+    }
+
+    .image-container {
+        margin-left: 10%;
+        width: 500px;
+        height: 300px;
+        overflow: hidden;
+        transition: opacity 0.5s ease; /* Add transition for opacity */
+        margin-top: -270px;
+    }
+
+    #selected-plane-image {
+        display: block; /* Ensure the image is displayed */
+        width: 100%; /* Make the image fill its container */
+        height: 100%; /* Make the image fill its container */
+        object-fit: cover;
+        opacity: 0; /* Initially hide the image */
+    }
+    #selected-plane-image.loaded {
+    opacity: 1; /* Show the image when loaded */
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+    <div class="logo">
         <a href="home.html">  
-              <img src="../Images/united_1.jpg">
-          </a>
-      </div>
+            <img src="../Images/united_1.jpg">
+        </a>
+    </div>
+    <ul>
+        <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="#">About</a></li>
+        <div class="circle"></div>
+        <img src="../Images/icon.png" alt="Another Image" class="right-image">
+    </ul>
+</div>
 
-      <ul>
-          <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
-          <li><a href="#">About</a></li>
-          <div class = "circle"></div>
-          <img src="../Images/icon.png" alt="Another Image" class="right-image">
-      </ul>
-  </div>
-    
-    <!-- <div class="foreground-image"></div> -->
-    <div class="progress-container">
-      <div class="progress-bar" id="progress-bar">
-          <div class="progress-slot" id="progress-slot-select"><a href="select.html">Select</a></div>
-          <div class="progress-slot" id="progress-slot-weight"><a href="weight.html">Weight</a></div>
-          <div class="progress-slot" id="progress-slot-fire"><a href="fire.html">Fire</a></div>
-          <div class="progress-slot" id="progress-slot-strap"><a href="strap.html">Strap</a></div>
-          <div class="progress-slot" id="progress-slot-submit"><a href="image_capture.html">Submit</a></div>
-      </div>
-  </div>
-  
-    <!-- Dropdown menu -->
-    <div class="dropdown-menu" id="dropdownMenu">
-      <label for="dog-names" class="sr-only">Select an Airplane:</label>
-      <select name="dog-names" id="dog-names" onchange="confirmSelectAction()">
-          <option value="" disabled selected>Select an Airplane</option>
-          <option value="Boeing 777">Boeing 777</option>
-          <option value="Boeing 787">Boeing 787</option>
-          <option value="Boeing 737">Boeing 737</option>
-          <option value="Boeing 757">Boeing 757</option>
-          <option value="Airbus">Airbus</option>
-      </select>
-  </div>
-   
-    <!-- <button class="airplane-choice">Select Airplane</button> -->
-    <a href="weight.html" class="get-started-btn">Continue <span>&rarr;</span></a>
-    <script src="../JS/script.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          // Reset confirmation status for weight action to "unconfirmed"
-          localStorage.setItem('selectConfirmation', 'unconfirmed');
-          updateProgressBar();
-          confirmSubmitAction();
-      });
-  
-      function confirmSelectAction() {
-          // Set confirmation flag for select action in localStorage
-          localStorage.setItem('selectConfirmation', 'confirmed');
-      }
-      function updateProgressBar() {
-          // Retrieve confirmation status for each action from localStorage
-          var fireConfirmation = localStorage.getItem('fireConfirmation');
-          var strapConfirmation = localStorage.getItem('strapConfirmation');
-          var weightConfirmation = localStorage.getItem('weightConfirmation');
-          var selectConfirmation = localStorage.getItem('selectConfirmation');
-          var submitConfirmation = localStorage.getItem('submitConfirmation');
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar">
+        <div class="progress-slot" id="progress-slot-select"><a href="select.html">Select</a></div>
+        <div class="progress-slot" id="progress-slot-weight"><a href="weight.html">Weight</a></div>
+        <div class="progress-slot" id="progress-slot-fire"><a href="fire.html">Fire</a></div>
+        <div class="progress-slot" id="progress-slot-strap"><a href="strap.html">Strap</a></div>
+        <div class="progress-slot" id="progress-slot-submit"><a href="image_capture.html">Submit</a></div>
+    </div>
+</div>
 
-          // Update the progress slots based on confirmation status
-          updateSlot('fire', fireConfirmation);
-          updateSlot('strap', strapConfirmation);
-          updateSlot('weight', weightConfirmation);
-          updateSlot('select', selectConfirmation);
-          updateSlot('submit', submitConfirmation);
-      }
+<div class="container">
+    <h1 class="top-words">Choose Your Plane</h1>
+    <div class="selection-container">
+        <div class="buttons-container">
+            <button class="plane-button" data-plane="Boeing 777" data-image="../Images/1-United.jpg">Boeing 777</button>
+            <button class="plane-button" data-plane="Boeing 787" data-image="../Images/2_United.jpg">Boeing 787</button>
+            <button class="plane-button" data-plane="Boeing 737" data-image="../Images/3-United.jpg">Boeing 737</button>
+            <button class="plane-button" data-plane="Boeing 757" data-image="../Images/4-United.jpg">Boeing 757</button>
+            <button class="plane-button" data-plane="Airbus" data-image="../Images/5-United.jpg">Airbus</button>
+        </div>
+        <div class="image-container">
+            <img src="" alt="Selected Plane" id="selected-plane-image">
+        </div>
+    </div>
+</div>
 
-      function updateSlot(action, confirmationStatus) {
-          var slot = document.getElementById('progress-slot-' + action);
-          if (confirmationStatus === 'confirmed') {
-              slot.classList.add('progress-filled');
-          } else {
-              slot.classList.remove('progress-filled');
-          }
-      }
-      function confirmSubmitAction() {
+<a href="weight.html" class="get-started-btn">Continue <span>&rarr;</span></a>
+
+<script src="../JS/script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const image = document.getElementById('selected-plane-image');
+        const buttons = document.querySelectorAll('.plane-button');
+
+        if (!image || !buttons) {
+            console.error('Image or buttons not found');
+            return;
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const planeName = button.getAttribute('data-plane');
+                const imagePath = button.getAttribute('data-image');
+
+                if (!imagePath) {
+                    console.error('Image path not found');
+                    return;
+                }
+
+                image.src = imagePath;
+                console.log(image.src)
+                image.style.opacity = '1';
+                confirmSelectAction();
+            });
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Reset confirmation status for weight action to "unconfirmed"
+        localStorage.setItem('selectConfirmation', 'unconfirmed');
+        updateProgressBar();
+        confirmSubmitAction();
+    });
+
+    function confirmSelectAction() {
+        // Set confirmation flag for select action in localStorage
+        localStorage.setItem('selectConfirmation', 'confirmed');
+    }
+    function updateProgressBar() {
+        // Retrieve confirmation status for each action from localStorage
+        var fireConfirmation = localStorage.getItem('fireConfirmation');
+        var strapConfirmation = localStorage.getItem('strapConfirmation');
+        var weightConfirmation = localStorage.getItem('weightConfirmation');
+        var selectConfirmation = localStorage.getItem('selectConfirmation');
+        var submitConfirmation = localStorage.getItem('submitConfirmation');
+
+        // Update the progress slots based on confirmation status
+        updateSlot('fire', fireConfirmation);
+        updateSlot('strap', strapConfirmation);
+        updateSlot('weight', weightConfirmation);
+        updateSlot('select', selectConfirmation);
+        updateSlot('submit', submitConfirmation);
+    }
+
+    function updateSlot(action, confirmationStatus) {
+        var slot = document.getElementById('progress-slot-' + action);
+        if (confirmationStatus === 'confirmed') {
+            slot.classList.add('progress-filled');
+        } else {
+            slot.classList.remove('progress-filled');
+        }
+    }
+    function confirmSubmitAction() {
         // Check if all actions (fire, strap, weight) are confirmed
         var fireConfirmation = localStorage.getItem('fireConfirmation');
         var strapConfirmation = localStorage.getItem('strapConfirmation');
@@ -159,7 +210,7 @@
         var submitConfirmation = localStorage.getItem('submitConfirmation'); // Retrieve the updated confirmation status
         updateSlot('submit', submitConfirmation); // Update the slot accordingly
     }
-  </script>
+</script>
 
-  </body>
+</body>
 </html>
