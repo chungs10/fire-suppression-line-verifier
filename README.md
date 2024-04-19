@@ -20,3 +20,7 @@ processes.
 # How to run:
 - From the main United folder, run `python router.py`
 - Once the initial processes are complete, navigate to 127.0.0.1:5000 in a browser
+
+# Other notes:
+- The machine learning model is not included since the file is large. Contact the group to get the trained model
+- For future improvement: the twoPics.py program may not terminate properly, future todo is reconfigure the QApplication to terminate completely when the subprogram is exited. This issue comes up when the "Live Analysis" button is clicked
