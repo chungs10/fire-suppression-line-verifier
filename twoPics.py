@@ -41,7 +41,7 @@ class MainWindow(QWidget):
         # self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowMinimizeButtonHint)
 
         # Open the video capture device (default webcam)
-        self.cap = cv2.VideoCapture(1)
+        self.cap = cv2.VideoCapture(0)
 
         # Check if the webcam is opened successfully
         if not self.cap.isOpened():
