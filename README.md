@@ -33,6 +33,7 @@ processes.
 
 # Python pip installs
 - pip install opencv-python numpy keras tensorflow pyqt5 Pillow flask flask_cors
+- pip install -r requirements.txt
 
 # How to run:
 - From the main United folder, run `python router.py`
