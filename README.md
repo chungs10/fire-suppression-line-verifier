@@ -65,7 +65,7 @@ A layered architecture supporting the computer vision pipeline:
 
 
 ## Project Structure
-
+```plaintext
 fire-suppression-line-verifier/
 ├── app/
 │   ├── router.py             # Main Flask application entry point
@@ -84,7 +84,7 @@ fire-suppression-line-verifier/
 │   └── test.py               # Testing utilities and validation
 ├── requirements.txt          # Python dependencies
 └── README.md                 # Project documentation
-
+```
 
 
 ## Team & Contributions
