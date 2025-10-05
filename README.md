@@ -44,17 +44,17 @@ A layered architecture supporting the computer vision pipeline:
    
 ### Installation
 * Clone the repository and install dependencies:
-    ```bash
-    git clone https://github.com/chungs10/fire-suppression-line-verifier.git
-   cd fire-suppression-line-verifier
-   pip install -r requirements.txt
-   ```
+```bash
+git clone https://github.com/chungs10/fire-suppression-line-verifier.git
+cd fire-suppression-line-verifier
+pip install -r requirements.txt
+```
 
 ### Run the application:
 1. Start the server
-    ```bash
-    python router.py
-    ```
+```bash
+python router.py
+```
 2. Access the web interface:
     Navigate to http://127.0.0.1:5000 in your browser.
 
